@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>表格转换Excel</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="tableConvertCsv.js" type="text/javascript"></script>
+        <style>
+            body{
+                margin: 0 auto;
+            }
+            table{
+                border-top: 1px solid black;
+                border-left: 1px solid black;
+                margin: 0 auto;
+            }
+            table td, table th{
+                border-right: 1px solid black;
+                border-bottom: 1px solid black;
+                text-align: center;
+            }
+            .table{
+                margin: 0 auto;
+            }
+            .convertBtn{
+                width: 110px;
+                text-align: center;
+                background: gray;
+                color: white;
+                padding: 8px;
+                box-shadow: 4px 4px 6px #404040;
+                border-radius: 4px;
+                margin: 16px auto;
+                cursor: pointer;
+            }
+        </style>
+        
+        
+        <script>
+            //使用前先构造函数
+            var downloadCsv = new downloadCsv();
+        </script>
+    </head>
+    <body>
+        <div class="content">
+            
+            
+            <!--调用函数，参数为表格"文件名,表格id,布尔值"(默认添加时间戳，false则不添加)-->
+            <div id="convertBtn" filename="asd" class="convertBtn" onclick="downloadCsv('duyang', 'table', false)">
+                下载Excel表格
+            </div>
+            <div class="tableDom">
+                <table id="table" border="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Heading</th>
+                            <th>Another Heading</th>
+                            <th>Product</th>
+                            <th>Sell</th>
+                            <th>Games</th>
+                            <th>User</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="4">row 1, cell 1</td>
+                            <td rowspan="2">row 1, cell 2</td>
+                            <td>row 1, cell 3</td>
+                            <td>row 1, cell 4</td>
+                            <td>row 1, cell 5</td>
+                            <td>row 1, cell 6</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;script&gt;var a = 123; console.log(a)&lt;/script&gt;</td>
+                            <td>row 1, cell 3</td>
+                            <td>row 1, cell 4</td>
+                            <td>row 1, cell 6</td>
+                        </tr>
+                        <tr>
+                            <td>{}[]|":;'\?><,./</td>
+                            <td>row 1, cell 2</td>
+                            <td rowspan="2">row 1, cell 3</td>
+                            <td>row 1, cell 4</td>
+                            <td>row 1, cell 5</td>
+                        </tr>
+                        <tr>
+                            <td>row 1, cell 2</td>
+                            <td>row 1, cell 4</td>
+                            <td>row 1, cell 5</td>
+                            <td>!@#$%^&|">:><}{:>"</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>row 2, cell 2</td>
+                            <td>row 2, cell 3</td>
+                            <td>row 2, cell 4</td>
+                            <td>"r!@#$%^&*("</td>
+                            <td>var a = qwe; console.log(a)</td>
+                            <td>"'$'%"^"e,"l"l 5"</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
