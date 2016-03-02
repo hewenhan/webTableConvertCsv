@@ -37,4 +37,4 @@ USAGE:
 
 
 EXAMPLE:
-	http://hewenhan.github.io/webTableConvertCsv/
+	./example/index.html

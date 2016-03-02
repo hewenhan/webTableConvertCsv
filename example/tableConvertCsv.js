@@ -68,8 +68,6 @@ var downloadCsv = function (filename, tableId, boolean) {
                     }
                 }
             }
-            console.log(map);
-            console.log(arr);
             return arr;
         };
 
@@ -114,7 +112,7 @@ var downloadCsv = function (filename, tableId, boolean) {
             aLink.dispatchEvent(evt);
         };
         var timestr = new Date().getTime();
-        if (boolean === false) {
+        if (!boolean) {
             timestr = '';
         }
 
