@@ -1,6 +1,6 @@
-var downloadCsv = function (filename, tableId, boolean) {
-    return function (filename, tableId, boolean) {
-        var getTableToArr = function (tableId) {
+var csv = function () {
+    return {
+        getTableToArr: function (tableId) {
             var table = document.getElementById(tableId);
             var arr = [];
             var tr = table.getElementsByTagName('tr');
@@ -8,17 +8,16 @@ var downloadCsv = function (filename, tableId, boolean) {
                 arr[i] = [];
                 var th = tr[i].getElementsByTagName('th');
                 for (var j = 0; j < th.length; j++) {
-                    arr[i][j] = th[j].innerText;
+                    arr[i][j] = th[j].innerHTML;
                 }
                 var td = tr[i].getElementsByTagName('td');
                 for (var j = 0; j < td.length; j++) {
-                    arr[i][j] = td[j].innerText;
+                    arr[i][j] = td[j].innerHTML;
                 }
             }
             return arr;
-        };
-
-        var getTableToMap = function (tableId) {
+        },
+        getTableToMap: function (tableId) {
             var table = document.getElementById(tableId);
             var tr = table.getElementsByTagName('tr');
             var map = [];
@@ -39,11 +38,10 @@ var downloadCsv = function (filename, tableId, boolean) {
                 return a.td - b.td;
             };
             return map.sort(sortTd);
-        };
-
-        var insertEmptyTd = function (array, mapArr) {
-            var arr = array;
-            var map = mapArr;
+        },
+        getCsvArr: function (tableId) {
+            var arr = this.getTableToArr(tableId);
+            var map = this.getTableToMap(tableId);
             for (var i = 0; i < map.length; i++) {
                 var td1 = map[i].td;
                 var tr1 = map[i].tr;
@@ -69,10 +67,8 @@ var downloadCsv = function (filename, tableId, boolean) {
                 }
             }
             return arr;
-        };
-
-
-        var takeCsvArr = function (tableId) {
+        },
+        getCsvStrEncode: function (tableId) {
             var regLastCode = function (str, patt) {
                 var reg = new RegExp(patt, "ig");
                 while ((result = reg.exec(str)) !== null) {
@@ -82,7 +78,7 @@ var downloadCsv = function (filename, tableId, boolean) {
                 var endIndex = lastIndex;
                 return str.substring(0, startIndex) + str.substring(endIndex);
             };
-            var tr = insertEmptyTd(getTableToArr(tableId), getTableToMap(tableId));
+            var tr = this.getCsvArr(tableId);
             var tableStr = '';
             for (var i = 0; i < tr.length; i++) {
                 var td = tr[i];
@@ -100,22 +96,24 @@ var downloadCsv = function (filename, tableId, boolean) {
                 }
             }
             return tableStr;
-        };
-
-        var downloadFile = function (fileName, content) {
-            var aLink = document.createElement('a');
-            var blob = new Blob([content]);
-            var evt = document.createEvent("HTMLEvents");
-            evt.initEvent("click", false, false);//initEvent 不加后两个参数在FF下会报错, 感谢 Barret Lee 的反馈
-            aLink.download = fileName;
-            aLink.href = URL.createObjectURL(blob);
-            aLink.dispatchEvent(evt);
-        };
-        var timestr = new Date().getTime();
-        if (!boolean) {
-            timestr = '';
+        },
+        download: function (arg) {
+            downloadFile = function (fileName, content) {
+                var aLink = document.createElement('a');
+                var blob = new Blob([content]);
+                var evt = document.createEvent("HTMLEvents");
+                evt.initEvent("click", false, false);
+                aLink.download = fileName;
+                aLink.href = URL.createObjectURL(blob);
+                aLink.dispatchEvent(evt);
+            };
+            var obj = {
+                filename: arg.filename ? arg.filename : 'webTable',
+                tableId: arg.tableId ? arg.tableId : 'table',
+                boolean: typeof (arg.boolean) !== 'undefined' ? arg.boolean : 'true'
+            };
+            var timestr = obj.boolean ? '_' + new Date().getTime() : '';
+            downloadFile(obj.filename + timestr + '.csv', decodeURIComponent(this.getCsvStrEncode(obj.tableId)));
         }
-
-        downloadFile(filename + timestr + '.csv', decodeURIComponent(takeCsvArr(tableId)));
     };
 };
