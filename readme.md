@@ -1,6 +1,7 @@
 # tableConvertCsv.js
 ----
-- `version v1.0.0` - Author: Blind Holmes
+<h6>`version v1.0.0`</h6>
+<h6>Author: Blind Holmes</h6>
 ----
 - [Introduction](https://github.com/hewenhan/webTableConvertCsv#introduction)
 - [Usage](https://github.com/hewenhan/webTableConvertCsv#usage)
