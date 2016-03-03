@@ -2,8 +2,9 @@
 ----
 `version v1.0.0`
 ----
-- [Introduction](https://github.com/alvarotrigo/fullPage.js#introduction)
-- [Usage](https://github.com/alvarotrigo/fullPage.js#usage)
+- [Introduction](https://github.com/hewenhan/webTableConvertCsv#introduction)
+- [Usage](https://github.com/hewenhan/webTableConvertCsv#usage)
+- [Methods](https://github.com/hewenhan/webTableConvertCsv#methods)
 
 ----
 
@@ -63,7 +64,7 @@ csv.download({
 });
 ```
 
-## Options
+#### Options
 - `filename`: (default`webTable`) the filename of you want to download to path.
 - `tableId`: (default`table`) you want to download Table's ID.
 - `boolean`: (default`true`) create time stamp after the filename while download to path.
