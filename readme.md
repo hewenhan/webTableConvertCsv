@@ -1,5 +1,5 @@
 # tableConvertCsv.js
-- `version v1.0.0`
+- `version v1.2.0`
 - `Author: Blind Holmes`
 
 ----
@@ -42,23 +42,16 @@ Set you want to download Table's ID like:
 ```
 
 ###Initialization
-All you need to constructor function befor use.
+- use method: htmlElement.download().
 like this:
 ```javascript
-var csv = new csv();
+document.getElementById('table').download();
 ```
-And you should call the function after table is loaded.
-like this:
-```javascript
-window.onload = function () {
-	csv.download({
-		tableId: 'table'
-	});
-};
+
 ```
 A more complex initialization with all options set could look like this:
 ```javascript
-csv.download({
+htmlElement.download({
 	filename: 'webTable',
 	tableId: 'table',
 	boolean: true
@@ -71,13 +64,13 @@ csv.download({
 - `boolean`: (default`true`) create time stamp after the filename while download to path.
 
 ## Methods
-### csv.getTableToArr(tableId)
+### csv.getTableToArr()
 return the id table orgin as Array
 ```javascript
-csv.getTableToArr('table')
+csv.getTableToArr()
 ```
 
-### csv.getTableToMap(tableId)
+### htmlElement.getTableToMap()
 if table-td has set rowspan attributes > 2,then return a map array of need to create empty td.
 it will return 3 arameters:
 ```array
@@ -104,19 +97,19 @@ it will return 3 arameters:
 - `td`: the number of the table-td has rowspan attributes order from left to right.
 - `span`: the number of last row need to create empty table-td.
 
-### csv.getCsvArr(tableId)
+### htmlElement.getCsvArr()
 return the arr of table after check rowspan attributes,and create right empty td.
 ```javascript
-csv.getCsvArr('table')
+csv.getCsvArr()
 ```
 
-### csv.getCsvStrEncode(tableId)
+### htmlElement.getCsvStrEncode()
 return the string of CSV format with URLENCODE.
 ```javascript
-csv.getCsvStrEncode('table')
+csv.getCsvStrEncode()
 ```
 
-### csv.download(obj)
+### htmlElement.download()
 create a link of target table and download.
 ```javascript
 csv.download({
