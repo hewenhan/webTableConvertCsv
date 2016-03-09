@@ -42,13 +42,12 @@ Set you want to download Table's ID like:
 ```
 
 ###Initialization
-- use method: htmlElement.download().
-like this:
+- use method: <h6>htmlElement.download()</h6>.
+- like this:
 ```javascript
 document.getElementById('table').download();
 ```
 
-```
 A more complex initialization with all options set could look like this:
 ```javascript
 htmlElement.download({
