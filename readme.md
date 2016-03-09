@@ -42,8 +42,8 @@ Set you want to download Table's ID like:
 ```
 
 ###Initialization
-- use method: <h6>htmlElement.download()</h6>.
-- like this:
+- use method: `htmlElement.download()`.
+- `like this:`
 ```javascript
 document.getElementById('table').download();
 ```
