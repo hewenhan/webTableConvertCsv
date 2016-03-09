@@ -63,10 +63,10 @@ htmlElement.download({
 - `boolean`: (default`true`) create time stamp after the filename while download to path.
 
 ## Methods
-### csv.getTableToArr()
+### htmlElement.getTableToArr()
 return the id table orgin as Array
 ```javascript
-csv.getTableToArr()
+document.getElementById('table').getTableToArr()
 ```
 
 ### htmlElement.getTableToMap()
@@ -99,19 +99,19 @@ it will return 3 arameters:
 ### htmlElement.getCsvArr()
 return the arr of table after check rowspan attributes,and create right empty td.
 ```javascript
-csv.getCsvArr()
+document.getElementById('table').getCsvArr()
 ```
 
 ### htmlElement.getCsvStrEncode()
 return the string of CSV format with URLENCODE.
 ```javascript
-csv.getCsvStrEncode()
+document.getElementById('table').getCsvStrEncode()
 ```
 
 ### htmlElement.download()
 create a link of target table and download.
 ```javascript
-csv.download({
+document.getElementById('table').download({
 	filename: 'webTable',
 	tableId: 'table',
 	boolean: true
