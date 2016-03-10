@@ -52,7 +52,6 @@ A more complex initialization with all options set could look like this:
 ```javascript
 htmlElement.download({
 	filename: 'webTable',
-	tableId: 'table',
 	boolean: true
 });
 ```
@@ -113,7 +112,6 @@ create a link of target table and download.
 ```javascript
 document.getElementById('table').download({
 	filename: 'webTable',
-	tableId: 'table',
 	boolean: true
 });
 ```
