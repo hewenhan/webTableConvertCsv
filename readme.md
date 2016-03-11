@@ -58,7 +58,6 @@ htmlElement.download({
 
 #### Options
 - `filename`: (default`webTable`) the filename of you want to download to path.
-- `tableId`: (default`table`) you want to download Table's ID.
 - `boolean`: (default`true`) create time stamp after the filename while download to path.
 
 ## Methods
@@ -117,5 +116,4 @@ document.getElementById('table').download({
 ```
 #### Options
 - `filename`: (default`webTable`) the filename of you want to download to path.
-- `tableId`: (default`table`) you want to download Table's ID.
 - `boolean`: (default`true`) create time stamp after the filename while download to path.
